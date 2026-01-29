@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>Vercel'e Deploy - Hızlı Kılavuz</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 20px;
+            line-height: 1.6;
+            background: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #2D4356;
+            border-bottom: 3px solid #D4A574;
+            padding-bottom: 15px;
+            font-size: 2.2rem;
+        }
+        h2 {
+            color: #2D4356;
+            margin-top: 40px;
+            font-size: 1.6rem;
+        }
+        h3 {
+            color: #D4A574;
+            margin-top: 25px;
+        }
+        .step {
+            background: #F8F6F3;
+            padding: 25px;
+            margin: 20px 0;
+            border-left: 4px solid #D4A574;
+            border-radius: 6px;
+        }
+        .step h3 {
+            margin-top: 0;
+        }
+        code {
+            background: #2D4356;
+            color: #D4A574;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+        .code-block {
+            background: #2D4356;
+            color: #EAE4DD;
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 15px 0;
+        }
+        .highlight {
+            background: #fff3cd;
+            padding: 15px;
+            border-radius: 6px;
+            margin: 15px 0;
+            border-left: 4px solid #E09F3E;
+        }
+        .success {
+            background: #d4edda;
+            padding: 15px;
+            border-radius: 6px;
+            margin: 15px 0;
+            border-left: 4px solid #4A9B7F;
+        }
+        ul, ol {
+            margin: 15px 0;
+            padding-left: 30px;
+        }
+        li {
+            margin: 8px 0;
+        }
+        .warning {
+            background: #f8d7da;
+            padding: 15px;
+            border-radius: 6px;
+            margin: 15px 0;
+            border-left: 4px solid #C85C5C;
+        }
+        a {
+            color: #2D4356;
+            text-decoration: none;
+            border-bottom: 2px solid #D4A574;
+        }
+        a:hover {
+            color: #D4A574;
+        }
+        .badge {
+            display: inline-block;
+            padding: 5px 12px;
+            background: #D4A574;
+            color: white;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: 600;
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🚀 İloya ERP'yi Vercel'e Deploy Etme</h1>
+        
+        <div class="success">
+            <strong>✨ 10 Dakikada Yayında!</strong><br>
+            Bu kılavuz size Next.js uygulamanızı ücretsiz olarak Vercel'de nasıl yayınlayacağınızı gösterir.
+        </div>
+
+        <h2>📋 Ön Gereksinimler</h2>
+        <ul>
+            <li>✅ GitHub hesabı (ücretsiz)</li>
+            <li>✅ Vercel hesabı (ücretsiz) - <a href="https://vercel.com/signup" target="_blank">vercel.com/signup</a></li>
+            <li>✅ Git kurulu (bilgisayarınızda)</li>
+        </ul>
+
+        <h2>🎯 Yöntem 1: GitHub + Vercel <span class="badge">ÖNERİLEN</span></h2>
+
+        <div class="step">
+            <h3>1. GitHub Repository Oluşturun</h3>
+            <ol>
+                <li><a href="https://github.com/new" target="_blank">GitHub'da yeni repository</a> oluşturun</li>
+                <li>Repository adı: <code>iloya-erp</code></li>
+                <li>Visibility: <strong>Private</strong> (önerilen) veya Public</li>
+                <li>"Create repository" butonuna tıklayın</li>
+            </ol>
+        </div>
+
+        <div class="step">
+            <h3>2. Kodu GitHub'a Yükleyin</h3>
+            <p>Terminal/Command Prompt'u açın ve şu komutları çalıştırın:</p>
+            <div class="code-block">
+# İndirdiğiniz klasöre gidin<br>
+cd iloya_erp_nextjs<br>
+<br>
+# Git repository başlatın<br>
+git init<br>
+git add .<br>
+git commit -m "İlk commit - İloya ERP"<br>
+<br>
+# GitHub'a bağlayın (KULLANICI_ADINIZ'i değiştirin)<br>
+git branch -M main<br>
+git remote add origin https://github.com/KULLANICI_ADINIZ/iloya-erp.git<br>
+git push -u origin main
+            </div>
+            <div class="highlight">
+                💡 <strong>İpucu:</strong> GitHub'da oluşturduğunuz repository sayfasında URL'yi bulabilirsiniz.
+            </div>
+        </div>
+
+        <div class="step">
+            <h3>3. Vercel'e Deploy Edin</h3>
+            <ol>
+                <li><a href="https://vercel.com" target="_blank">vercel.com</a> adresine gidin ve giriş yapın</li>
+                <li>"Add New..." → "Project" butonuna tıklayın</li>
+                <li>"Import Git Repository" altında GitHub hesabınızı bağlayın</li>
+                <li><code>iloya-erp</code> repository'nizi seçin</li>
+                <li>"Import" butonuna tıklayın</li>
+                <li>Ayarları olduğu gibi bırakın (Next.js otomatik algılanır)</li>
+                <li><strong>"Deploy"</strong> butonuna tıklayın</li>
+            </ol>
+            <div class="success">
+                ✅ <strong>Tebrikler!</strong> 2-3 dakika içinde uygulamanız yayında olacak!
+            </div>
+        </div>
+
+        <div class="step">
+            <h3>4. Uygulamanızı Açın</h3>
+            <p>Deployment tamamlandığında:</p>
+            <ul>
+                <li>"Visit" butonuna tıklayın</li>
+                <li>Vercel size <code>https://iloya-erp-xxx.vercel.app</code> gibi bir URL verir</li>
+                <li>Bu URL'yi paylaşabilir veya özel domain bağlayabilirsiniz</li>
+            </ul>
+        </div>
+
+        <h2>⚡ Yöntem 2: Vercel CLI (Terminal Severler İçin)</h2>
+
+        <div class="step">
+            <h3>Adım 1: Vercel CLI Kurun</h3>
+            <div class="code-block">
+npm install -g vercel
+            </div>
+        </div>
+
+        <div class="step">
+            <h3>Adım 2: Deploy Edin</h3>
+            <div class="code-block">
+cd iloya_erp_nextjs<br>
+vercel
+            </div>
+            <p>Soruları cevaplayın:</p>
+            <ul>
+                <li>Set up and deploy? → <strong>Y</strong></li>
+                <li>Which scope? → Hesabınızı seçin</li>
+                <li>Link to existing project? → <strong>N</strong></li>
+                <li>Project name? → <code>iloya-erp</code></li>
+                <li>Directory? → <strong>./</strong> (Enter)</li>
+                <li>Override settings? → <strong>N</strong></li>
+            </ul>
+        </div>
+
+        <div class="step">
+            <h3>Adım 3: Production'a Geçin</h3>
+            <div class="code-block">
+vercel --prod
+            </div>
+        </div>
+
+        <h2>⚙️ Güncelleme Nasıl Yapılır?</h2>
+
+        <div class="step">
+            <h3>GitHub Yöntemi Kullanıyorsanız:</h3>
+            <div class="code-block">
+git add .<br>
+git commit -m "Güncelleme mesajı"<br>
+git push
+            </div>
+            <p>Vercel otomatik olarak yeni versiyonu deploy eder! 🎉</p>
+        </div>
+
+        <div class="step">
+            <h3>CLI Kullanıyorsanız:</h3>
+            <div class="code-block">
+vercel --prod
+            </div>
+        </div>
+
+        <h2>⚠️ Önemli Notlar</h2>
+
+        <div class="warning">
+            <h3>Veri Saklama</h3>
+            <p><strong>Şu anki durum:</strong> Veriler RAM'de (in-memory) saklanıyor.</p>
+            <p><strong>Bu ne demek?</strong> Sunucu her yeniden başladığında veriler sıfırlanır.</p>
+            <p><strong>Çözüm:</strong> Production kullanımı için Vercel KV veya MongoDB entegre edilmeli.</p>
+        </div>
+
+        <div class="highlight">
+            <h3>🗄️ Kalıcı Veri İçin: Vercel KV Kurulumu</h3>
+            <ol>
+                <li>Vercel Dashboard'da projenize gidin</li>
+                <li>Storage → KV → Create Database</li>
+                <li>Database adı: <code>iloya-erp-db</code></li>
+                <li>Terminal'de: <code>npm install @vercel/kv</code></li>
+                <li><code>lib/store.ts</code> dosyasını KV kullanacak şekilde güncelleyin</li>
+            </ol>
+            <p><a href="https://vercel.com/docs/storage/vercel-kv" target="_blank">Detaylı KV Dökümanı →</a></p>
+        </div>
+
+        <h2>🎨 Özelleştirme</h2>
+
+        <h3>Kendi Domain Adınızı Bağlayın</h3>
+        <ol>
+            <li>Vercel Dashboard → Settings → Domains</li>
+            <li>"Add" butonuna tıklayın</li>
+            <li>Domain adınızı girin (örn: <code>erp.iloyatasarim.com</code>)</li>
+            <li>DNS kayıtlarını güncelleyin</li>
+        </ol>
+
+        <h3>Environment Variables Ekleyin</h3>
+        <ol>
+            <li>Vercel Dashboard → Settings → Environment Variables</li>
+            <li>Key-Value çiftleri ekleyin</li>
+            <li>Örnek: <code>DATABASE_URL=...</code></li>
+        </ol>
+
+        <h2>🆘 Sorun Giderme</h2>
+
+        <div class="step">
+            <h3>Build Hatası Alıyorum</h3>
+            <ul>
+                <li>Vercel Dashboard → Deployments → Failed deployment'a tıklayın</li>
+                <li>Build Logs'u inceleyin</li>
+                <li>Hata mesajını okuyun ve düzeltin</li>
+            </ul>
+        </div>
+
+        <div class="step">
+            <h3>Uygulama Açılmıyor</h3>
+            <ul>
+                <li>Runtime Logs'u kontrol edin (Dashboard → Logs)</li>
+                <li>API route'larında hata var mı kontrol edin</li>
+                <li>Environment variables doğru mu kontrol edin</li>
+            </ul>
+        </div>
+
+        <div class="step">
+            <h3>Güncellemeler Yansımıyor</h3>
+            <ul>
+                <li>GitHub'a push yaptınız mı? (<code>git push</code>)</li>
+                <li>Vercel Dashboard'da son deployment'ı kontrol edin</li>
+                <li>Cache sorunu olabilir - hard refresh yapın (Ctrl+Shift+R)</li>
+            </ul>
+        </div>
+
+        <h2>📚 Faydalı Kaynaklar</h2>
+        <ul>
+            <li><a href="https://vercel.com/docs" target="_blank">Vercel Dökümanları</a></li>
+            <li><a href="https://nextjs.org/docs" target="_blank">Next.js Dökümanları</a></li>
+            <li><a href="https://vercel.com/docs/storage" target="_blank">Vercel Storage Seçenekleri</a></li>
+            <li><a href="https://vercel.com/support" target="_blank">Vercel Support</a></li>
+        </ul>
+
+        <h2>✅ Checklist</h2>
+        <ul style="list-style: none;">
+            <li>☐ GitHub hesabı oluşturdum</li>
+            <li>☐ Vercel hesabı oluşturdum</li>
+            <li>☐ Repository oluşturdume ve kodu yükledim</li>
+            <li>☐ Vercel'e deploy ettim</li>
+            <li>☐ Uygulamayı test ettim</li>
+            <li>☐ (Opsiyonel) Vercel KV ekledim</li>
+            <li>☐ (Opsiyonel) Özel domain bağladım</li>
+        </ul>
+
+        <div class="success">
+            <h3>🎉 Başarılar!</h3>
+            <p>Uygulamanız artık canlı ve dünyanın her yerinden erişilebilir!</p>
+            <p>Sorularınız için Claude ile çalışmaya devam edebilirsiniz.</p>
+        </div>
+
+        <hr style="margin: 40px 0; border: none; border-top: 2px solid #D4A574;">
+        
+        <p style="text-align: center; color: #6B6B6B; font-size: 14px;">
+            <strong>İloya Tasarım ERP v1.0</strong><br>
+            Framework: Next.js 14 | Deployment: Vercel<br>
+            Geliştirici: Claude (Anthropic) | Ocak 2026
+        </p>
+    </div>
+</body>
+</html>
